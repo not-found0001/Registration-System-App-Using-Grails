@@ -7,6 +7,12 @@
 	</head>
 
 	<body>
+		<g:if test="${flash.message}">
+			<div class="container">
+				<div class="alert alert-success text-center mt-3"> ${flash.message} </div>
+			</div>
+		</g:if>
+
 		<form class="col-md-5 mx-auto text-center border border-light p-5 mt-5" action="#">
 			<div style="font-size: 48px;">
 				<i class="fas fa-address-book"></i>
