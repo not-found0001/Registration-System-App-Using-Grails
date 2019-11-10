@@ -35,7 +35,9 @@
 					<h4> User List </h4>
 				</div>
 				<div class="col-3 ml-auto">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search Here">
+				<g:form controller="User" action="index">
+					<g:textField name="name" class="form-control mr-sm-2" placeholder="Search User By Last Name" />
+				</g:form>
 				</div>	
 			</div>
 		</div>

@@ -5,8 +5,14 @@ class UserController {
     def index() 
     {
     	if(session.email == "admin@localhost.local"){
-    		def users = User.list()
-    		[users:users]
+    		if(params.name){
+    			def users=User.findAllByLastname(params.name)
+    			[users:users]
+    		}
+    		else{
+    			def users = User.list()
+    			[users:users]
+    		}
     	}
     	else{
     		redirect(action: "login")
