@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title> User Profile </title>
+		<title> Change Password </title>
 	</head>
 
 	<body>
@@ -18,7 +18,9 @@
 				    <ul class="navbar-nav ml-auto">
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          <span style="font-size: 18px;">User</span>
+				          <g:each in="${user}" var="user_name">
+				          ${user_name.firstname} ${user_name.lastname}
+				      	</g:each>
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				          <g:link class="dropdown-item" action="change_password">Change Password</g:link>
@@ -30,6 +32,13 @@
 			</div>
 		</nav>
 
+		<g:if test="${flash.error}">
+			<div class="container">
+				<div class="alert alert-danger text-center mt-3"> ${flash.error} </div>
+			</div>
+		</g:if>
+
+
 		<div class="row">
 			<div class="col-2 text-center p-2 mt-2">
 				<p class="border bg-dark p-2 ml-3"> <a style="text-decoration: none;color: white;" href="/user/show"> Profile Page </a> </p>
@@ -40,13 +49,14 @@
 					<h4> Change Password </h4>
 				</div>
 				<div class="container mt-3">
-					<input type="text" class="form-control mb-4 mr-5" placeholder="Previous Password">
-				    <input type="text" class="form-control mb-4" placeholder="New Password">
-				    <input type="text" class="form-control mb-4" placeholder="Confirm Password">
+					<g:form controller="User" action="update_password">
+						<g:field type="password" name="prevPassword" class="form-control mb-4 mr-5" placeholder="Previous Password"/>
+					    <input type="password" name="newPassword" class="form-control mb-4" placeholder="New Password"/>
+					    <input type="password" name="confPassword" class="form-control mb-4" placeholder="Confirm Password"/>
 
-		    		<button class="btn btn-info btn-md" style="margin-rightt: 24px;"> Change Password </button>
-		            <button class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>
-             	
+			    		<button class="btn btn-info btn-md" style="margin-rightt: 24px;"> Change Password </button>
+			            <button class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>
+             		</g:form>
 				</div>
 			</div>
 		</div>
