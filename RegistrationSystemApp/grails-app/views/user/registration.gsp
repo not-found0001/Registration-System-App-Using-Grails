@@ -52,7 +52,7 @@
 
 		<script> 
 		    $('#email').blur(function(){
-		      let Email = $('#email').val();
+		      let Email = $('#email').val();  
 		      $.ajax({
 		        url:"${g.createLink(controller:'User',action:'ajaxCheck')}",
 		        data:{email:Email},

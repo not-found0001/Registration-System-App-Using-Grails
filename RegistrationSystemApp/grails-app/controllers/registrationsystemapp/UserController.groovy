@@ -4,7 +4,25 @@ class UserController {
 
     def index() 
     {
+    	if(session.email == "admin@localhost.local"){
+    		def users = User.list()
+    		[users:users]
+    	}
+    	else{
+    		redirect(action: "login")
+    	}
+    }
 
+    def show()
+    {
+    	if(session.email != "admin@localhost.local" && session.email != null){
+    		def user = User.where{email==session.email}
+    		def user_porfile = user.list();
+    		[user:user_porfile]
+    	}
+    	else{
+    		redirect(action: "login")
+    	}
     }
 
     def login()
@@ -12,17 +30,29 @@ class UserController {
 
     }
 
+    def check_login()
+    {
+    	if(params.email == "admin@localhost.local" && params.password == "admin"){
+    		session.email = params.email
+    		redirect(action: "index")
+    	}
+    	else if(User.findByEmailAndPassword(params.email, params.password.encodeAsMD5())){
+    		session.email = params.email
+    		redirect(action: "show")
+    	}
+    	else{
+    		flash.error = "Wrong Email Or Password"
+    		redirect(action: "login")
+    	}
+    }
+
     def logout()
     {
-    	
+    	session.invalidate()
+    	redirect(aciton: "login")
     }
 
     def registration()
-    {
-
-    }
-
-    def show()
     {
 
     }

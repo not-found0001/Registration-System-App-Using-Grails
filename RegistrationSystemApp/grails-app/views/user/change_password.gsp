@@ -21,8 +21,8 @@
 				          <span style="font-size: 18px;">User</span>
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="/user/change_password">Change Password</a>
-				          <a class="dropdown-item" href="#">Logout</a>
+				          <g:link class="dropdown-item" action="change_password">Change Password</g:link>
+				          <g:link class="dropdown-item" action="logout"> Logout </g:link>
 				        </div>
 				      </li>
 				  </ul>

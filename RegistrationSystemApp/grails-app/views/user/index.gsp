@@ -18,11 +18,10 @@
 				    <ul class="navbar-nav ml-auto">
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          <span style="font-size: 18px;">User</span>
+				          <span style="font-size: 18px;">Admin</span>
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <g:link class="dropdown-item" action="change_password"> Change Password </g:link>
-				          <a class="dropdown-item" href="#">Logout</a>
+				          <g:link class="dropdown-item" action="logout"> Logout </g:link>
 				        </div>
 				      </li>
 				  </ul>
@@ -51,25 +50,16 @@
 			      <th scope="col">Phone</th>
 			    </tr>
 			  </thead>
+			  
 			  <tbody>
+			  	<g:each in="${users}" var="user">
 			    <tr>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
-			      <td>@mdo</td>
+			      <td>${user.firstname} ${user.lastname}</td>
+			      <td><%= (Math.floor((new Date() - user.birthdate)/365)).toInteger() %></td>
+			      <td>${user.email}</td>
+			      <td>${user.phone}</td>
 			    </tr>
-			    <tr>
-			      <td>Jacob</td>
-			      <td>Thornton</td>
-			      <td>@fat</td>
-			      <td>@mdo</td>
-			    </tr>
-			    <tr>
-			      <td>Larry</td>
-			      <td>the Bird</td>
-			      <td>@twitter</td>
-			      <td>@mdo</td>
-			    </tr>
+				</g:each>
 			  </tbody>
 			</table>
 		</div>
