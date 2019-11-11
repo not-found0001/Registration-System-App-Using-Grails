@@ -4,6 +4,9 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title> Login Page </title>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 	</head>
 
 	<body>
@@ -25,19 +28,26 @@
 			</div>
 		    <p class="h4 mb-4">Login Panel</p>
 
-		    <g:field type="email" name="email" class="form-control mb-4" placeholder="E-mail" />
-		    <g:field type="password" name="password" class="form-control mb-4" placeholder="Password" />
+		    <g:field id="email" type="email" name="email" class="form-control mb-4" placeholder="E-mail" />
+		    <g:field id="password" type="password" name="password" class="form-control mb-4" placeholder="Password" />
 
 		    
     		<button class="btn btn-info btn-md" style="margin-rightt: 24px;"> Login </button>
-            <button class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>
-             	
+			<button id="clr-btn" class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>             	
             <div class="mt-3">
 			    <p>Are You New Here?
 			        <a href="${createLink(action: 'registration')}">Register Now</a>
 			    </p>
 			</div>
 		</g:form>
+
+		<script>
+			$("#clr-btn").click(e => {
+				e.preventDefault();
+				$("#email").val("");
+				$("#password").val("");
+			});
+		</script>
 	</body>
 </html>
 

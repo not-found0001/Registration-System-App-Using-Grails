@@ -4,6 +4,9 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title> Change Password </title>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 	</head>
 
 	<body>
@@ -50,17 +53,25 @@
 				</div>
 				<div class="container mt-3">
 					<g:form controller="User" action="update_password">
-						<g:field type="password" name="prevPassword" class="form-control mb-4 mr-5" placeholder="Previous Password"/>
-					    <input type="password" name="newPassword" class="form-control mb-4" placeholder="New Password"/>
-					    <input type="password" name="confPassword" class="form-control mb-4" placeholder="Confirm Password"/>
+						<g:field type="password" id="prevPassword" name="prevPassword" class="form-control mb-4 mr-5" placeholder="Previous Password"/>
+					    <input type="password" id="newPassword" name="newPassword" class="form-control mb-4" placeholder="New Password"/>
+					    <input type="password" id="confPassword" name="confPassword" class="form-control mb-4" placeholder="Confirm Password"/>
 
 			    		<button class="btn btn-info btn-md" style="margin-rightt: 24px;"> Change Password </button>
-			            <button class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>
+			            <button id="clr-btn" class="btn btn-info btn-md" style="margin-left: 24px;"> Clear </button>
              		</g:form>
 				</div>
 			</div>
 		</div>
 
+		<script>
+			$("#clr-btn").click(e => {
+				e.preventDefault();
+				$("#prevPassword").val("");
+				$("#newPassword").val("");
+				$("#confPassword").val("");
+			});
+		</script>
 	</body>
 </html>
 
