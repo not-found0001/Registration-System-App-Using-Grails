@@ -36,7 +36,7 @@
 				</div>
 				<div class="col-3 ml-auto">
 				<g:form controller="Admin" action="index">
-					<g:textField name="name" class="form-control mr-sm-2" placeholder="Search User By Last Name" />
+					<g:textField name="name" value="${lastname}" class="form-control mr-sm-2" placeholder="Search User By Last Name" />
 				</g:form>
 				</div>	
 			</div>

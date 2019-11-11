@@ -7,7 +7,7 @@ class AdminController {
     	if(session.email == "admin@localhost.local"){
     		if(params.name){
     			def users=User.findAllByLastname(params.name)
-    			[users:users]
+    			[users:users, lastname:params.name]
     		}
     		else{
     			def users = User.list()
