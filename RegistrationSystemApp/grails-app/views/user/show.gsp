@@ -32,6 +32,12 @@
 			</div>
 		</nav>
 
+		<g:if test="${flash.message}">
+			<div class="container">
+				<div class="alert alert-success text-center mt-3"> ${flash.message} </div>
+			</div>
+		</g:if>
+
 		<div class="row">
 			<div class="col-2 text-center p-2 mt-2">
 				<p class="border bg-dark p-2 ml-3"> <g:link style="text-decoration: none;color: white;" action="show">Profile Page</g:link></p>

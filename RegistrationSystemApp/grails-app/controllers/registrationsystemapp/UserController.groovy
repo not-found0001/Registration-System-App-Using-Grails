@@ -112,9 +112,9 @@ class UserController {
     		}
     		else{
     			User.executeUpdate("update User set password=:newPassword where email=:userEmail and password=:prevPassword",[newPassword:params.newPassword.encodeAsMD5(),userEmail:session.email,prevPassword:params.prevPassword.encodeAsMD5()])
-	            session.password=params.newPassword
+	            session.password=params.newPassword.encodeAsMD5()
 	            flash.message="Password changed successfully"
-	            redirect(action:"login") 
+	            redirect(action:"show") 
 	        }
     	}
     	else{
