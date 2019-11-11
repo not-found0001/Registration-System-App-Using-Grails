@@ -9,8 +9,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "user", action: "login")
-        "/user"(redirect: [controller: 'user', action: 'index'])
+        "/"(controller: "User", action: "login")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

@@ -2,22 +2,18 @@ package registrationsystemapp
 
 class UserController {
 
-    def index() 
-    {
-    	if(session.email == "admin@localhost.local"){
-    		if(params.name){
-    			def users=User.findAllByLastname(params.name)
-    			[users:users]
-    		}
-    		else{
-    			def users = User.list()
-    			[users:users]
-    		}
+	def index()
+	{
+		if(session.email == "admin@localhost.local"){
+    		redirect(controller:"Admin", action: "index")
     	}
-    	else{
-    		redirect(action: "login")
+    	else if(session.email){
+    		redirect(action: "show")
     	}
-    }
+		else{
+			redirect(action: "login")
+		}
+	}
 
     def show()
     {
@@ -34,7 +30,7 @@ class UserController {
     def login()
     {
     	if(session.email == "admin@localhost.local"){
-    		redirect(action: "index")
+    		redirect(controller:"Admin", action: "index")
     	}
     	else if(session.email){
     		redirect(action: "show")
@@ -46,7 +42,7 @@ class UserController {
     	if(params.email == "admin@localhost.local" && params.password == "admin"){
     		session.email = params.email
     		session.password = params.password
-    		redirect(action: "index")
+    		redirect(controller:"Admin", action: "index")
     	}
     	else if(User.findByEmailAndPassword(params.email, params.password.encodeAsMD5())){
     		session.email = params.email
@@ -62,13 +58,13 @@ class UserController {
     def logout()
     {
     	session.invalidate()
-    	redirect(aciton: "login")
+    	redirect(controller:"User", aciton: "login")
     }
 
     def registration()
     {
     	if(session.email == "admin@localhost.local"){
-    		redirect(action: "index")
+    		redirect(controller:"Admin", action: "index")
     	}
     	else if(session.email){
     		redirect(action: "show")
